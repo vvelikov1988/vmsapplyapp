@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+ <html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Apply to join the VMS team</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>About you:</h1>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/apply/submitapply" method = "POST">
+                {% csrf_token %}
+                <div class ="form group">
+                    <label for="first_name">First name:</label>
+                    <input type="text" name="first_name" id="first_name">
+                </div>
+                <div class ="form group">
+                    <label for="last_name">Last name:</label>
+                    <input type="text" name="last_name" id="last_name">
+                </div>
+                <div class ="form group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class ="form group">
+                    <label for="resume">Please paste your resume below:</label>
+                    <textarea id="resume" name="resume" rows="5" cols="50"></textarea>
+                <input type="submit" value="Submit application">
+            </form>
+    </body>
+</html>
